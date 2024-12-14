@@ -1,16 +1,20 @@
 const Vehicle = require('../models/vehicle');
 
 const createVehicle = async (req, res) => {
-  const { vehicleName, status } = req.body;
-
-  try {
-    const vehicle = new Vehicle({ vehicleName, status });
-    await vehicle.save();
-    res.status(201).json(vehicle);
-  } catch (error) {
-    res.status(500).json({ message: `${error}` });
-  }
-};
+    const { vehicleName, status } = req.body;
+    if (!vehicleName || !status) {
+      return res.status(400).json({ message: "vehicle name and status are required" });
+    }
+  
+    try {
+      const vehicle = new Vehicle({ vehicleName, status });
+      await vehicle.save();
+      res.status(201).json(vehicle);
+    } catch (error) {
+      res.status(500).json({ message: `Server error: ${error.message}` });
+    }
+  };
+  
 
 const getVehicles = async (req, res) => {
   try {
