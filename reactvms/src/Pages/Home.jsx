@@ -16,7 +16,7 @@ const Home = () => {
   const fetchVehicles = async () => {
     console.log(process.env.REACT_APP_API_URL)
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/vehicles`);
+      const response = await axios.get(`https://vehicle-management-system-be.onrender.com/api/vehicles`);
       setVehicles(response.data);
     } catch (error) {
       console.error('Error fetching vehicles:', error);
@@ -25,7 +25,7 @@ const Home = () => {
 
    const handleDelete = async () => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/vehicles/${vehicleToDelete}`);
+      await axios.delete(`https://vehicle-management-system-be.onrender.com/api/vehicles/${vehicleToDelete}`);
       setIsDeleteModalOpen(false);
       fetchVehicles();
     } catch (error) {

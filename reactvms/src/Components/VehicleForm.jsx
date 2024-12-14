@@ -7,7 +7,7 @@ const VehicleForm = ({ vehicleId, closeForm, fetchVehicles }) => {
 
   useEffect(() => {
     if (vehicleId) {
-        axios.get(`${process.env.REACT_APP_API_URL}/vehicles/${vehicleId}`)
+        axios.get(`https://vehicle-management-system-be.onrender.com/api/vehicles/${vehicleId}`)
         .then((res) => {
           setVehicleName(res.data.vehicleName);
           setStatus(res.data.status);
@@ -19,14 +19,14 @@ const VehicleForm = ({ vehicleId, closeForm, fetchVehicles }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (vehicleId) {
-      axios.put(`${process.env.REACT_APP_API_URL}/vehicles/${vehicleId}`, { vehicleName, status })
+      axios.put(`https://vehicle-management-system-be.onrender.com/api/vehicles/${vehicleId}`, { vehicleName, status })
         .then(() => {
           fetchVehicles();
           closeForm();
         })
         .catch((err) => console.log(err));
     } else {
-      axios.post(`${process.env.REACT_APP_API_URL}/vehicles`, { vehicleName, status })
+      axios.post(`https://vehicle-management-system-be.onrender.com/api/vehicles`, { vehicleName, status })
         .then(() => {
           fetchVehicles();
           closeForm();
