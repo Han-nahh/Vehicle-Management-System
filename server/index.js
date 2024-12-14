@@ -3,7 +3,10 @@ const cors = require("cors");
 
 const db =require('./db')
 const app=express()
-app.use(cors());
+const allowedOrigins = ["https://vehicle-management-system-102-h90biv2bl.vercel.app/","https://localhost:3000"];
+app.use(cors({ origin: allowedOrigins }));
+
+// app.use(cors());
 app.use(express.json()); 
 const port =5000;
 const vehicleRoutes = require('./Routes/vehicleRoutes');
