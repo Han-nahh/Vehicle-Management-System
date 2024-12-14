@@ -1,0 +1,3 @@
+/node_modules
+reactvms/ .env
+server/ .env
