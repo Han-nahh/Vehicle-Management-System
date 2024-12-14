@@ -10,7 +10,7 @@ const swaggerDefinition = {
   servers: [
     {
       url: 'https://vehicle-management-system-be.onrender.com',
-      description: 'Local server',
+      description: 'Deployed server',
     },
   ],
 };
